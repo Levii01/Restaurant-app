@@ -1,4 +1,4 @@
-= form_for @pizza do |f|
+= form_for [@restaurant, @pizza] do |f|
   - if @pizza.errors.any?
     #error_explanation
       %h2= "#{pluralize(@pizza.errors.count, "error")} prohibited this pizza from being saved:"

@@ -11,8 +11,8 @@
   = @pizza.ingredients
 %p
   %b Restaurant:
-  = @pizza.restaurant
+  = @pizza.restaurant.name
 
-= link_to 'Edit', edit_pizza_path(@pizza)
+= link_to 'Edit', edit_restaurant_pizza_path(@restaurant)
 \|
-= link_to 'Back', pizzas_path
+= link_to 'Back', restaurant_pizzas_path(@restaurant)
