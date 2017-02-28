@@ -1,10 +1,12 @@
 %p#notice= notice
-%h1 Restaurants
+%h1= pluralize(@restaurants.count, "Restaurants")
+
 %table.table.table-condensed
   %thead
     %tr
       %th Name
       %th Address
+      %th Menu
       %th Openings time
       %th Closings time
       %th Opening day
@@ -14,6 +16,7 @@
       %tr
         %td= restaurant.name
         %td= restaurant.address
+        %td= link_to pluralize(restaurant.pizzas.count, "Dish"),restaurant_pizzas_path(restaurant), class: 'btn btn-default'
         %td= restaurant.openings_time.strftime("%R")
         %td= restaurant.closings_time.strftime("%R")
         %td= restaurant.opening_day
