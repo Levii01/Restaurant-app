@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @pizza.name
+%p
+  %b Price:
+  = @pizza.price
+%p
+  %b Ingredients:
+  = @pizza.ingredients
+%p
+  %b Restaurant:
+  = @pizza.restaurant
+
+= link_to 'Edit', edit_pizza_path(@pizza)
+\|
+= link_to 'Back', pizzas_path
