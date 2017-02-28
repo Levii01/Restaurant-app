@@ -19,8 +19,8 @@
       <tr>
         <td><%= restaurant.name %></td>
         <td><%= restaurant.address %></td>
-        <td><%= restaurant.openings_time %></td>
-        <td><%= restaurant.closings_time %></td>
+        <td><%= restaurant.openings_time.strftime("%R") %></td>
+        <td><%= restaurant.closings_time.strftime("%R") %></td>
         <td><%= restaurant.opening_day %></td>
         <td><%= link_to 'Show', restaurant %></td>
         <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>

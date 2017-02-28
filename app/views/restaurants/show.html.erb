@@ -12,12 +12,12 @@
 
 <p>
   <strong>Openings time:</strong>
-  <%= @restaurant.openings_time %>
+  <%= @restaurant.openings_time.strftime("%R") %>
 </p>
 
 <p>
   <strong>Closings time:</strong>
-  <%= @restaurant.closings_time %>
+  <%= @restaurant.closings_time.strftime("%R") %>
 </p>
 
 <p>
