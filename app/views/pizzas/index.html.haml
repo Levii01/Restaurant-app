@@ -1,14 +1,15 @@
-%h1 Listing pizzas
+%h1 Menu
+%h2
+  This restaurant have
+  = pluralize(@restaurant.pizzas.count, "pizza")
 
-%table
+%table.table.table-condensed
   %thead
     %tr
       %th Name
       %th Price
       %th Ingredients
-      %th
-      %th
-      %th
+      %th Action
 
   %tbody
     - @pizzas.each do |pizza|
@@ -16,10 +17,17 @@
         %td= pizza.name
         %td= number_to_currency(pizza.price, unit: "PLN", separator: ",", delimiter: "", format: "%n %u")
         %td= pizza.ingredients
-        %td= link_to 'Show', [@restaurant, pizza]
-        %td= link_to 'Edit', edit_restaurant_pizza_path(@restaurant, pizza)
-        %td= link_to 'Destroy', [@restaurant, pizza], :method => :delete
-
+        %td
+          = link_to [@restaurant, pizza], { title: "Show" } do
+            %button.btn.btn-default
+              = fa_icon "search"
+          = link_to edit_restaurant_pizza_path(@restaurant, pizza), { title: "Edit" } do
+            %button.btn.btn-default
+              = fa_icon "edit"
+          = link_to [@restaurant, pizza], { :method => :delete, title: "Delete" } do
+            %button.btn.btn-default
+              = fa_icon "times"
 %br
 
-= link_to 'New Pizza', new_restaurant_pizza_path(@restaurant)
+= link_to 'New Pizza', new_restaurant_pizza_path(@restaurant), class: 'btn btn-info'
+= link_to 'Restaurant list', restaurants_path, {class: 'btn btn-default', title: "Back"}
