@@ -1,0 +1,24 @@
+%p#notice= notice
+%h1 Restaurants
+%table
+  %thead
+    %tr
+      %th Name
+      %th Address
+      %th Openings time
+      %th Closings time
+      %th Opening day
+      %th{:colspan => "3"}
+  %tbody
+    - @restaurants.each do |restaurant|
+      %tr
+        %td= restaurant.name
+        %td= restaurant.address
+        %td= restaurant.openings_time.strftime("%R")
+        %td= restaurant.closings_time.strftime("%R")
+        %td= restaurant.opening_day
+        %td= link_to 'Show', restaurant
+        %td= link_to 'Edit', edit_restaurant_path(restaurant)
+        %td= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Restaurant', new_restaurant_path
