@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170228191032) do
+ActiveRecord::Schema.define(version: 20170302153213) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,9 +30,10 @@ ActiveRecord::Schema.define(version: 20170228191032) do
     t.string   "address"
     t.time     "openings_time"
     t.time     "closings_time"
-    t.string   "opening_day"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "opening_day"
+    t.integer  "closing_day"
     t.index ["name"], name: "index_restaurants_on_name", using: :btree
   end
 
