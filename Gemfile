@@ -38,6 +38,7 @@ gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'haml-rails', "~> 0.9"
 gem 'faker', require: false
+gem 'simple_form'
 
 
 group :development, :test do
