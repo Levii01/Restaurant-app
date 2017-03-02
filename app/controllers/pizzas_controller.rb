@@ -7,7 +7,6 @@ class PizzasController < ApplicationController
   end
 
   def index
-    # binding.pry
     @pizzas = @restaurant.pizzas
   end
 

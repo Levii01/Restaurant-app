@@ -10,25 +10,9 @@
       %th Openings time
       %th Closings time
       %th Opening day
+      %th Closing day
       %th Actions
   %tbody
-    - @restaurants.each do |restaurant|
-      %tr
-        %td= restaurant.name
-        %td= restaurant.address
-        %td= link_to pluralize(restaurant.pizzas.count, "Dish"),restaurant_pizzas_path(restaurant), class: 'btn btn-default'
-        %td= restaurant.openings_time.strftime("%R")
-        %td= restaurant.closings_time.strftime("%R")
-        %td= restaurant.opening_day
-        %td
-          = link_to restaurant, { title: "Show" } do
-            %button.btn.btn-default
-              = fa_icon "search"
-          = link_to edit_restaurant_path(restaurant), { title: "Edit" } do
-            %button.btn.btn-default
-              = fa_icon "edit"
-          = link_to restaurant, { method: :delete, title: "Destroy" } do
-            %button.btn.btn-default
-              = fa_icon "times"
+    = render @restaurants
 %br/
 = link_to 'New Restaurant', new_restaurant_path, class: 'btn btn-info'

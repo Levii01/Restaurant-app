@@ -1,0 +1,18 @@
+%tr
+  %td= restaurant.name
+  %td= restaurant.address
+  %td= link_to pluralize(restaurant.pizzas.count, "Dish"),restaurant_pizzas_path(restaurant), class: 'btn btn-default'
+  %td= shortest_timme(restaurant.openings_time)
+  %td= shortest_timme(restaurant.closings_time)
+  %td= restaurant.opening_day
+  %td= restaurant.closing_day
+  %td
+    = link_to restaurant, { title: "Show" } do
+      %button.btn.btn-default
+        = fa_icon "search"
+    = link_to edit_restaurant_path(restaurant), { title: "Edit" } do
+      %button.btn.btn-default
+        = fa_icon "edit"
+    = link_to restaurant, { method: :delete, title: "Destroy" } do
+      %button.btn.btn-default
+        = fa_icon "times"

@@ -7,13 +7,16 @@
   = @restaurant.address
 %p
   %strong Openings time:
-  = @restaurant.openings_time.strftime("%R")
+  = shortest_timme(@restaurant.openings_time)
 %p
   %strong Closings time:
-  = @restaurant.closings_time.strftime("%R")
+  = shortest_timme(@restaurant.closings_time)
 %p
   %strong Opening day:
   = @restaurant.opening_day
+
+  %strong Closing day:
+  = @restaurant.closing_day
 = link_to 'Edit', edit_restaurant_path(@restaurant), class: 'btn btn-default'
 |
 = link_to 'Back', restaurants_path, class: 'btn btn-default'

@@ -1,0 +1,14 @@
+%tr
+  %td= pizza.name
+  %td= price(pizza.price)
+  %td= pizza.ingredients
+  %td
+    = link_to [@restaurant, pizza], { title: "Show" } do
+      %button.btn.btn-default
+        = fa_icon "search"
+    = link_to edit_restaurant_pizza_path(@restaurant, pizza), { title: "Edit" } do
+      %button.btn.btn-default
+        = fa_icon "edit"
+    = link_to [@restaurant, pizza], { :method => :delete, title: "Delete" } do
+      %button.btn.btn-default
+        = fa_icon "times"
