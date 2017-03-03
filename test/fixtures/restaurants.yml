@@ -3,13 +3,13 @@
 one:
   name: MyString
   address: MyString
-  openings_time: 2017-02-28 17:31:00
-  closings_time: 2017-02-28 17:31:00
+  opening_time: 2017-02-28 17:31:00
+  closing_time: 2017-02-28 17:31:00
   opening_day: MyString
 
 two:
   name: MyString
   address: MyString
-  openings_time: 2017-02-28 17:31:00
-  closings_time: 2017-02-28 17:31:00
+  opening_time: 2017-02-28 17:31:00
+  closing_time: 2017-02-28 17:31:00
   opening_day: MyString

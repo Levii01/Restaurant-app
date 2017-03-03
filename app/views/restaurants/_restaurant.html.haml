@@ -2,8 +2,8 @@
   %td= restaurant.name
   %td= restaurant.address
   %td= link_to pluralize(restaurant.pizzas.count, "Dish"),restaurant_pizzas_path(restaurant), class: 'btn btn-default'
-  %td= shortest_timme(restaurant.openings_time)
-  %td= shortest_timme(restaurant.closings_time)
+  %td= shortest_timme(restaurant.opening_time)
+  %td= shortest_timme(restaurant.closing_time)
   %td= restaurant.opening_day
   %td= restaurant.closing_day
   %td

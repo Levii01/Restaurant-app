@@ -4,8 +4,8 @@
   .form-inputs
     = f.input :name
     = f.input :address
-    = f.input :openings_time
-    = f.input :closings_time
+    = f.input :opening_time
+    = f.input :closing_time
     = f.input :opening_day, collection: week_days, label_method: :capitalize, include_blank: true
     = f.input :closing_day, collection: week_days.reverse, blank: true
   .form-actions
