@@ -1,0 +1,14 @@
+language:
+- ruby
+rvm:
+  - 2.3.0
+before_script:
+  # - psql -c 'create database Pizza-place_test;' -U postgres
+  - cp config/database.yml.travis config/database.yml
+  - bundle exec rake db:create db:migrate
+cache:
+- bundler
+addons:
+  postgresql: '9.5'
+sudo: false
+dist: trusty

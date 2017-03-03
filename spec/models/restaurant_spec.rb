@@ -16,6 +16,7 @@ RSpec.describe Restaurant do
       subject { build :restaurant , name: 'Magda Gessler pizza'}
       it { is_expected.to_not be_valid }
     end
+    
     context 'when try to create empty restaurant' do
       let!(:restaurant) { create :restaurant }
 

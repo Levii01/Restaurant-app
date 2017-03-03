@@ -1,4 +1,4 @@
-#Restaurant menager
+#Restaurant menager [![Build Status](https://travis-ci.org/Levii01/Restaurant-app.svg?branch=master)](https://travis-ci.org/Levii01/Restaurant-app)
 
 ### :hash: App description
 -------------
@@ -12,7 +12,7 @@ Check it out [http://pizza-restaurants.herokuapp.com/](http://pizza-restaurants.
 | :--: | :---: |
 | [Ruby](https://www.ruby-lang.org) | 2.3.0 |
 | [Ruby on Rails](http://www.rubyonrails.org/) | 5.1 |
-| [PostgreSQL](http://www.postgresql.org/) | 9.5.5 |
+| [PostgreSQL](http://www.postgresql.org/) | 9.5 |
 
 ### :book: Setup
 -------------
@@ -22,6 +22,5 @@ Check it out [http://pizza-restaurants.herokuapp.com/](http://pizza-restaurants.
 4. `rails server`
 5. Go to the address `http://localhost:3000/`
 
-#### :white_check_mark: what you should do to qualify for the workshops
-Runt test with rspec:
+#### :white_check_mark: Run rspec
 `RAILS_ENV=test bundle exec rspec`
