@@ -2,16 +2,17 @@ require 'rails_helper'
 
 RSpec.describe RestaurantsController, type: :controller do
   let(:restaurant) { create :restaurant }
-  let(:invalid_attributes) { {name: nil, address: nil} }
+  let(:invalid_attributes) { {name: nil, address: nil, opening_time: '2000-01-01 08:30:16 UTC',
+                                                                      opening_day: 'Tuesday'} }
   let(:valid_attributes) { build(:restaurant).attributes }
 
 
   describe "GET #index" do
     subject { get :index }
-
     it_behaves_like 'template rendering action', :index
+
     it "assigns all pizzas as @pizzas" do
-      get :index
+      subject
       expect(assigns(:restaurants)).to eq([restaurant])
     end
   end
@@ -21,7 +22,7 @@ RSpec.describe RestaurantsController, type: :controller do
     it_behaves_like 'template rendering action', :show
 
     it "assigns the requested restaurant as @restaurant" do
-      get :show, params: { id: restaurant.id }
+      subject
       expect(assigns(:restaurant)).to eq(restaurant)
     end
   end
@@ -31,7 +32,7 @@ RSpec.describe RestaurantsController, type: :controller do
     it_behaves_like 'template rendering action', :new
 
     it "assigns a new restaurant as @restaurant" do
-      get :new, params: {}
+      subject
       expect(assigns(:restaurant)).to be_a_new(Restaurant)
     end
   end
@@ -59,7 +60,7 @@ RSpec.describe RestaurantsController, type: :controller do
       end
 
       it "assigns a newly created restaurant as @restaurant" do
-        post :create, params: {restaurant: valid_attributes}
+        subject
         expect(assigns(:restaurant)).to be_a(Restaurant)
         expect(assigns(:restaurant)).to be_persisted
       end
@@ -69,13 +70,14 @@ RSpec.describe RestaurantsController, type: :controller do
       include_context 'record save failure'
       it_behaves_like 'template rendering action', :new
 
+      subject { post :create, params: {restaurant: invalid_attributes }}
       it "assigns a newly created but unsaved restaurant as @restaurant" do
-        post :create, params: {restaurant: invalid_attributes }
+        subject
         expect(assigns(:restaurant)).to be_a_new(Restaurant)
       end
 
       it "re-renders the 'new' template" do
-        post :create, params: {restaurant: invalid_attributes }
+        subject
         expect(response).to render_template("new")
       end
     end
@@ -117,11 +119,14 @@ RSpec.describe RestaurantsController, type: :controller do
 
     context "with invalid params" do
       include_context 'record save failure'
-
       it_behaves_like 'template rendering action', :edit
-      it "assigns the restaurant as @restaurant" do
-        put :update, params: {id: restaurant.to_param, restaurant: invalid_attributes}
-        expect(assigns(:restaurant)).to eq(restaurant)
+
+      context 'when updates restaurant with invalid attribute' do
+        subject { -> { put :update, params: { id: restaurant, restaurant: invalid_attributes } } }
+        it { is_expected.to_not change{ restaurant.reload.name } }
+        it { is_expected.to_not change{ restaurant.reload.address } }
+        it { is_expected.to_not change{ restaurant.reload.opening_time.utc.to_s } }
+        it { is_expected.to_not change{ restaurant.reload.opening_day } }
       end
     end
   end
